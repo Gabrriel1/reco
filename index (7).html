@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RecoSocial - Get Paid From Your Phone</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: #0a0a1a;
+  color: #fff;
+  overflow-x: hidden;
+}
+
+/* ===== STEP 1 - DEVICE SELECT ===== */
+#step1 {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.step1-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 50px;
+}
+
+.step1-logo img {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.step1-logo .text {
+  font-size: 26px;
+  font-weight: 800;
+}
+
+.step1-logo .text span:first-child { color: #fff; }
+.step1-logo .text span:last-child { color: #a855f7; }
+
+.step1-heading {
+  font-size: 30px;
+  font-weight: 900;
+  line-height: 1.2;
+  margin-bottom: 12px;
+}
+
+.step1-heading span {
+  display: block;
+  background: linear-gradient(90deg, #7c3aed, #ec4899);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.step1-sub {
+  color: #9ca3af;
+  font-size: 15px;
+  margin-bottom: 40px;
+  max-width: 300px;
+}
+
+.device-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  width: 100%;
+  max-width: 340px;
+}
+
+.device-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 20px 28px;
+  border-radius: 16px;
+  font-size: 17px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: all 0.3s;
+  border: none;
+  color: #fff;
+  letter-spacing: 0.5px;
+}
+
+.device-btn.ios {
+  background: linear-gradient(135deg, #7c3aed, #a855f7);
+  border: 1px solid rgba(168,85,247,0.4);
+}
+
+.device-btn.ios:hover {
+  background: linear-gradient(135deg, #6d28d9, #9333ea);
+  transform: translateY(-2px);
+}
+
+.device-btn.android {
+  background: linear-gradient(135deg, #059669, #10b981);
+  border: 1px solid rgba(16,185,129,0.4);
+}
+
+.device-btn.android:hover {
+  background: linear-gradient(135deg, #047857, #059669);
+  transform: translateY(-2px);
+}
+
+.device-btn .icon {
+  font-size: 24px;
+}
+
+.step1-live {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 40px;
+  font-size: 13px;
+  color: #6b7280;
+}
+
+.step1-live .dot {
+  width: 8px;
+  height: 8px;
+  background: #22c55e;
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+}
+
+.step1-trust {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 16px;
+  font-size: 12px;
+  color: #6b7280;
+}
+
+/* ===== STEP 2 - MAIN PAGE ===== */
+#step2 {
+  display: none;
+  padding-bottom: 90px;
+}
+
+/* Header */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  max-width: 420px;
+  margin: 0 auto;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.logo-text {
+  font-size: 22px;
+  font-weight: 800;
+}
+
+.logo-text span:first-child { color: #fff; }
+.logo-text span:last-child { color: #a855f7; }
+
+.live-badge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 20px;
+  padding: 8px 14px;
+  font-size: 13px;
+  color: #ccc;
+}
+
+.live-dot {
+  width: 8px;
+  height: 8px;
+  background: #22c55e;
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+/* Hero */
+.hero {
+  text-align: center;
+  padding: 40px 20px 30px;
+  max-width: 420px;
+  margin: 0 auto;
+}
+
+.hero h1 {
+  font-size: 36px;
+  font-weight: 900;
+  line-height: 1.1;
+  margin-bottom: 20px;
+}
+
+.hero h1 span {
+  display: block;
+  background: linear-gradient(90deg, #7c3aed, #ec4899);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero p {
+  color: #9ca3af;
+  font-size: 16px;
+  line-height: 1.6;
+  max-width: 340px;
+  margin: 0 auto;
+}
+
+/* Members Paid Card */
+.members-card {
+  background: linear-gradient(160deg, #1a1a3e 0%, #0f0f2a 50%, #1a1035 100%);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 16px;
+  padding: 28px;
+  margin: 20px auto;
+  max-width: 380px;
+}
+
+.members-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.members-label {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: #9ca3af;
+}
+
+.members-badge {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background: rgba(34,197,94,0.1);
+  border: 1px solid rgba(34,197,94,0.2);
+  border-radius: 20px;
+  padding: 4px 10px;
+  font-size: 13px;
+  color: #22c55e;
+  font-weight: 600;
+}
+
+.members-number {
+  font-size: 52px;
+  font-weight: 900;
+  background: linear-gradient(90deg, #7c3aed, #a855f7, #ec4899);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 10px;
+}
+
+.mini-chart {
+  height: 60px;
+  margin: 15px 0;
+  position: relative;
+}
+
+.mini-chart svg { width: 100%; height: 100%; }
+
+.earning-now {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: #9ca3af;
+  margin-bottom: 20px;
+}
+
+.earning-now .dot {
+  width: 8px;
+  height: 8px;
+  background: #22c55e;
+  border-radius: 50%;
+}
+
+/* Live Cashouts Ticker */
+.cashouts-ticker {
+  background: linear-gradient(160deg, #0f1a2e, #0a0a1a);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 12px;
+  padding: 16px 20px;
+  margin: 16px auto;
+  max-width: 380px;
+  overflow: hidden;
+}
+
+.cashouts-label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: #9ca3af;
+  margin-bottom: 10px;
+}
+
+.cashouts-label .dot { width: 8px; height: 8px; background: #22c55e; border-radius: 50%; }
+
+.ticker-track {
+  display: flex;
+  gap: 20px;
+  animation: ticker 15s linear infinite;
+  white-space: nowrap;
+  font-size: 14px;
+  color: #ccc;
+}
+
+.ticker-track .amount { color: #22c55e; font-weight: 700; }
+
+@keyframes ticker {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* Notification */
+.notif-container {
+  position: relative;
+  max-width: 380px;
+  margin: 0 auto;
+  min-height: 44px;
+}
+
+.notif-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(34,197,94,0.08);
+  border: 1px solid rgba(34,197,94,0.15);
+  border-radius: 10px;
+  padding: 12px 16px;
+  font-size: 14px;
+  color: #ccc;
+  position: absolute;
+  width: 100%;
+  opacity: 0;
+  transition: opacity 0.5s;
+}
+
+.notif-item.active { opacity: 1; }
+.notif-item .dot { width: 8px; height: 8px; background: #22c55e; border-radius: 50%; flex-shrink: 0; }
+.notif-item strong { color: #fff; }
+.notif-item .amount { color: #22c55e; font-weight: 700; }
+
+/* Trustpilot */
+.trustpilot-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 16px;
+  font-size: 13px;
+  color: #9ca3af;
+}
+
+.trustpilot-bar .label { color: #fff; font-weight: 700; }
+
+.stars { display: flex; gap: 2px; }
+
+.star {
+  width: 22px;
+  height: 22px;
+  background: #00b67a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+}
+
+.tp-logo { color: #fff; font-weight: 700; }
+
+/* Stats Bar */
+.stats-bar {
+  display: flex;
+  gap: 12px;
+  padding: 20px;
+  max-width: 420px;
+  margin: 10px auto;
+}
+
+.stat-item {
+  flex: 1;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 14px;
+  padding: 20px 12px;
+  text-align: center;
+}
+
+.stat-value {
+  font-size: 28px;
+  font-weight: 900;
+  margin-bottom: 6px;
+}
+
+.stat-value.purple { color: #a855f7; }
+.stat-value.yellow { color: #eab308; }
+.stat-value.pink { color: #ec4899; }
+.stat-value .plus { font-size: 20px; }
+.stat-value .star-icon { font-size: 22px; }
+
+.stat-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  color: #9ca3af;
+}
+
+/* How It Works */
+.how-section {
+  padding: 40px 20px;
+  max-width: 420px;
+  margin: 0 auto;
+}
+
+.section-eyebrow {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: #7c3aed;
+  margin-bottom: 12px;
+}
+
+.how-section h2 {
+  font-size: 30px;
+  font-weight: 900;
+  line-height: 1.2;
+  margin-bottom: 30px;
+}
+
+.step-card {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 16px;
+  padding: 24px;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.step-number {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  font-weight: 800;
+  flex-shrink: 0;
+}
+
+.step-number.s1 { background: linear-gradient(135deg, #7c3aed, #a855f7); }
+.step-number.s2 { background: linear-gradient(135deg, #6366f1, #818cf8); }
+.step-number.s3 { background: linear-gradient(135deg, #ec4899, #f472b6); }
+
+.step-content h3 {
+  font-size: 20px;
+  font-weight: 800;
+  margin-bottom: 6px;
+}
+
+.step-content p {
+  font-size: 14px;
+  color: #9ca3af;
+  line-height: 1.5;
+}
+
+.pro-tip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(234,179,8,0.1);
+  border: 1px solid rgba(234,179,8,0.2);
+  border-radius: 8px;
+  padding: 8px 14px;
+  margin-top: 12px;
+  font-size: 13px;
+  color: #eab308;
+}
+
+.pro-tip .icon { font-size: 16px; }
+.pro-tip span { color: #fbbf24; font-weight: 600; }
+
+/* Trust Badges */
+.trust-badges {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 12px;
+  font-size: 13px;
+  color: #9ca3af;
+}
+
+/* Sticky CTA Button */
+.sticky-cta-wrap {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  padding: 12px 20px 20px;
+  background: linear-gradient(to top, #0a0a1a 60%, transparent);
+  display: none;
+}
+
+.cta-gradient {
+  display: block;
+  width: 100%;
+  max-width: 380px;
+  margin: 0 auto;
+  padding: 20px 28px;
+  background: linear-gradient(90deg, #ec4899, #f97316);
+  border: none;
+  border-radius: 14px;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  text-align: center;
+  cursor: pointer;
+  text-decoration: none;
+  transition: opacity 0.3s;
+}
+
+.cta-gradient:hover { opacity: 0.9; }
+</style>
+</head>
+<body>
+
+<!-- ===== STEP 1: DEVICE SELECT ===== -->
+<div id="step1">
+  <div class="step1-logo">
+    <img id="step1Logo" alt="Reco" style="width:44px;height:44px;border-radius:10px;object-fit:cover;">
+    <div class="text"><span>reco</span><span>social</span></div>
+  </div>
+
+  <h1 class="step1-heading">What device<span>are you using?</span></h1>
+  <p class="step1-sub">Select your device to see the best deals available for you.</p>
+
+  <div class="device-buttons">
+    <button class="device-btn ios" onclick="selectDevice('ios')">
+      <span class="icon"></span> iPhone / iPad
+    </button>
+    <button class="device-btn android" onclick="selectDevice('android')">
+      <span class="icon">🤖</span> Android
+    </button>
+  </div>
+
+  <div class="step1-live">
+    <span class="dot"></span>
+    8,108 people earning right now
+  </div>
+
+  <div class="step1-trust">
+    🔒 Encrypted · 🚫 No credit card · ✕ Cancel anytime
+  </div>
+</div>
+
+<!-- ===== STEP 2: MAIN PAGE (hidden, loaded on click) ===== -->
+<div id="step2">
+
+<header class="header">
+  <div class="logo">
+    <img id="mainLogo" alt="Reco" class="logo-icon">
+    <div class="logo-text"><span>reco</span><span>social</span></div>
+  </div>
+  <div class="live-badge">
+    <span class="live-dot"></span>
+    Live · <strong id="liveCount">8,108</strong> earning now
+  </div>
+</header>
+
+<section class="hero">
+  <h1>GET PAID<span>FROM YOUR PHONE</span></h1>
+  <p>Earn real cash by playing games, testing apps, and answering quick surveys. Cash out any time to PayPal, Venmo, or your bank.</p>
+</section>
+
+<div class="members-card">
+  <div class="members-card-header">
+    <span class="members-label">MEMBERS PAID TODAY</span>
+    <span class="members-badge">↗ +12%</span>
+  </div>
+  <div class="members-number" id="membersPaid">8,200</div>
+  <div class="mini-chart">
+    <svg viewBox="0 0 320 60" fill="none">
+      <defs>
+        <linearGradient id="lineGrad" x1="0" y1="0" x2="320" y2="0" gradientUnits="userSpaceOnUse">
+          <stop offset="0%" stop-color="#7c3aed"/>
+          <stop offset="100%" stop-color="#6366f1"/>
+        </linearGradient>
+        <linearGradient id="areaGrad" x1="0" y1="0" x2="0" y2="60" gradientUnits="userSpaceOnUse">
+          <stop offset="0%" stop-color="#6366f1" stop-opacity="0.3"/>
+          <stop offset="100%" stop-color="#6366f1" stop-opacity="0"/>
+        </linearGradient>
+      </defs>
+      <path d="M0 50 Q40 48 80 42 Q120 36 160 30 Q200 26 240 18 Q280 12 320 8" stroke="url(#lineGrad)" stroke-width="2.5" fill="none"/>
+      <path d="M0 50 Q40 48 80 42 Q120 36 160 30 Q200 26 240 18 Q280 12 320 8 L320 60 L0 60 Z" fill="url(#areaGrad)"/>
+    </svg>
+  </div>
+  <div class="earning-now">
+    <span class="dot"></span>
+    <span id="earningNow">8,108</span> are earning right now.
+  </div>
+</div>
+
+<div class="cashouts-ticker">
+  <div class="cashouts-label">
+    <span class="dot"></span> Live Cashouts
+  </div>
+  <div style="overflow:hidden;">
+    <div class="ticker-track">
+      <span>Sarah just cashed out <span class="amount">$210</span></span>
+      <span>·</span>
+      <span>Jamal just cashed out <span class="amount">$64</span></span>
+      <span>·</span>
+      <span>Emily just cashed out <span class="amount">$155</span></span>
+      <span>·</span>
+      <span>Mike just cashed out <span class="amount">$92</span></span>
+      <span>·</span>
+      <span>Sarah just cashed out <span class="amount">$210</span></span>
+      <span>·</span>
+      <span>Jamal just cashed out <span class="amount">$64</span></span>
+      <span>·</span>
+      <span>Emily just cashed out <span class="amount">$155</span></span>
+      <span>·</span>
+      <span>Mike just cashed out <span class="amount">$92</span></span>
+    </div>
+  </div>
+</div>
+
+<div class="notif-container">
+  <div class="notif-item active" id="notif1">
+    <span class="dot"></span>
+    <span><strong>Kenji</strong> earned <span class="amount">$89</span> · Seattle, WA — just now</span>
+  </div>
+  <div class="notif-item" id="notif2">
+    <span class="dot"></span>
+    <span><strong>Diego</strong> earned <span class="amount">$182</span> · Chicago, IL — just now</span>
+  </div>
+  <div class="notif-item" id="notif3">
+    <span class="dot"></span>
+    <span><strong>Lily</strong> earned <span class="amount">$43</span> · Portland, OR — just now</span>
+  </div>
+  <div class="notif-item" id="notif4">
+    <span class="dot"></span>
+    <span><strong>Emma</strong> earned <span class="amount">$67</span> · Boston, MA — just now</span>
+  </div>
+  <div class="notif-item" id="notif5">
+    <span class="dot"></span>
+    <span><strong>Marcus</strong> earned <span class="amount">$128</span> · Phoenix, AZ — just now</span>
+  </div>
+  <div class="notif-item" id="notif6">
+    <span class="dot"></span>
+    <span><strong>Liam</strong> earned <span class="amount">$245</span> · San Diego, CA — just now</span>
+  </div>
+</div>
+
+<div class="trustpilot-bar">
+  <span class="label">Excellent</span>
+  <div class="stars">
+    <div class="star">★</div>
+    <div class="star">★</div>
+    <div class="star">★</div>
+    <div class="star">★</div>
+    <div class="star">★</div>
+  </div>
+  <span>274,977 reviews on</span>
+  <span class="tp-logo">★ Trustpilot</span>
+</div>
+
+<div class="stats-bar">
+  <div class="stat-item">
+    <div class="stat-value purple">2M<span class="plus">+</span></div>
+    <div class="stat-label">ACTIVE MEMBERS</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-value yellow">200<span class="plus">+</span></div>
+    <div class="stat-label">REWARD OPTIONS</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-value pink">4.6<span class="star-icon">★</span></div>
+    <div class="stat-label">MEMBER RATING</div>
+  </div>
+</div>
+
+<section class="how-section">
+  <div class="section-eyebrow">HOW IT WORKS</div>
+  <h2>Three steps to your first payout.</h2>
+
+  <div class="step-card">
+    <div class="step-number s1">1</div>
+    <div class="step-content">
+      <h3>Sign up</h3>
+      <p>Takes a few minutes. No credit card required.</p>
+    </div>
+  </div>
+
+  <div class="step-card">
+    <div class="step-number s2">2</div>
+    <div class="step-content">
+      <h3>Complete deals</h3>
+      <p>Test apps, play games and take surveys to complete deals.</p>
+      <div class="pro-tip">
+        <span class="icon">⚡</span>
+        <span>Pro tip</span> — Spend $5, get up to $500 back.
+      </div>
+    </div>
+  </div>
+
+  <div class="step-card">
+    <div class="step-number s3">3</div>
+    <div class="step-content">
+      <h3>Cash out</h3>
+      <p>PayPal, Venmo, or bank — in days, not weeks.</p>
+    </div>
+  </div>
+</section>
+
+<div class="trust-badges">
+  <span>🔒 Encrypted</span>
+  <span>·</span>
+  <span>🚫 No credit card</span>
+  <span>·</span>
+  <span>✕ Cancel anytime</span>
+</div>
+
+</div><!-- end step2 -->
+
+<!-- Sticky CTA (only visible on step 2) -->
+<div class="sticky-cta-wrap" id="stickyCta">
+  <a href="https://raintrkr.com/r/eyJ0IjoicmVjb3NvY2lhbC1jcHIiLCJ0aWQiOiJjNmJmOTBlOTkwYmQyYjdhNTRlNSIsInRzIjoxNzg5MzIwODYyNTI5fQ?s1=test1&feb=1" class="cta-gradient">START NOW AND CLAIM $25 BONUS →</a>
+</div>
+
+<script>
+// Logo base64 - set on both pages
+var logoSrc = "data:image/jpeg;base64,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";
+document.getElementById('step1Logo').src = logoSrc;
+document.getElementById('mainLogo').src = logoSrc;
+
+var mainPageStarted = false;
+
+function selectDevice(device) {
+  // Hide step 1
+  document.getElementById('step1').style.display = 'none';
+  // Show step 2
+  document.getElementById('step2').style.display = 'block';
+  document.getElementById('stickyCta').style.display = 'block';
+  window.scrollTo(0, 0);
+
+  // Only start animations after button click
+  if (!mainPageStarted) {
+    mainPageStarted = true;
+    startMainPage();
+  }
+}
+
+function startMainPage() {
+  // Rotating notifications
+  var notifs = document.querySelectorAll('.notif-item');
+  var currentNotif = 0;
+
+  setInterval(function() {
+    notifs[currentNotif].classList.remove('active');
+    currentNotif = (currentNotif + 1) % notifs.length;
+    notifs[currentNotif].classList.add('active');
+  }, 3000);
+
+  // Live count animation
+  var base = 8100;
+  var range = 50;
+  setInterval(function() {
+    var count = base + Math.floor(Math.random() * range);
+    var formatted = count.toLocaleString();
+    document.getElementById('liveCount').textContent = formatted;
+    document.getElementById('earningNow').textContent = formatted;
+  }, 5000);
+}
+</script>
+
+</body>
+</html>
